@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - ChatBoy</title>
+    <meta name="description" content="Let's Chat and connect.">
+    <meta name="ChatBoy" content="ChatBoy :: Welcome to ChatBoy You can Start Broadcasting your Message.">
+    <link rel="icon" type="image/jpeg" sizes="556x1001" href="assets/img/boy.jpg">
+    <link rel="icon" type="image/jpeg" sizes="556x1001" href="assets/img/boy.jpg">
+    <link rel="icon" type="image/jpeg" sizes="556x1001" href="assets/img/boy.jpg">
+    <link rel="icon" type="image/jpeg" sizes="556x1001" href="assets/img/boy.jpg">
+    <link rel="icon" type="image/jpeg" sizes="556x1001" href="assets/img/boy.jpg">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script type="text/javascript" src="/webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href = "/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<div id="page-top"><a class="menu-toggle rounded" href="#"><i class="fa fa-bars"></i></a>
+    <nav class="navbar navbar-light navbar-expand" id="sidebar-wrapper">
+        <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler d-none" data-bs-target="#"></button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav sidebar-nav" id="sidebar-nav">
+                    <li class="nav-item sidebar-brand"><a class="nav-link active js-scroll-trigger" href="#page-top">ChatBoy</a></li>
+                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#page-top">Home</a></li>
+<!--                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>-->
+<!--                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>-->
+<!--                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>-->
+<!--                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="d-flex masthead" style="background-image:url('assets/img/bg-masthead.jpg');">
+        <div class="container my-auto text-center">
+            <h1 class="mb-1">ChatBoy</h1>
+            <h3 class="mb-5"><em>Welcome to ChatBoy</em></h3>
+            <form>
+                <label for="name-value"></label><input id = "name-value" class="form-control-sm" type="text" name="Enter Your Name" placeholder="Enter Your Name">
+                <label for="email-value"></label><input id = "email-value" class="form-control-sm" type="email" name="Enter Your Email" placeholder="Enter Your Email">
+            <button id="login" href="/" class="btn btn-primary active text-capitalize text-center bg-primary bg-gradient border rounded m-auto btn-xl js-scroll-trigger" method="post" data-bss-hover-animate="pulse" style="text-align: center;height: 20px;font-size: 15px;letter-spacing: 0px;line-height: 0px;"><strong>Login</strong></button>
+            </form>
+            <div class="overlay"></div>
+        </div>
+    </header>
+    <footer class="footer text-center">
+        <div class="container">
+            <ul class="list-inline mb-5">
+                <li class="list-inline-item">&nbsp;<a class="link-light social-link rounded-circle" href="#"><i class="icon-social-facebook"></i></a></li>
+                <li class="list-inline-item">&nbsp;<a class="link-light social-link rounded-circle" href="#"><i class="icon-social-twitter"></i></a></li>
+                <li class="list-inline-item">&nbsp;<a class="link-light social-link rounded-circle" href="#"><i class="icon-social-github"></i></a></li>
+            </ul>
+            <p class="text-muted mb-0 small">Copyright &nbsp;© ChatBoy 2022</p>
+        </div><a class="js-scroll-trigger scroll-to-top rounded" href="#page-top"><i class="fa fa-angle-up"></i></a>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/stylish-portfolio.js"></script>
+</div>
+
+<div id="chat-room" class = "d-none">
+<div class="container-fluid" style="transform-style: preserve-3d;padding: 50px;">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class = "card mt-3">
+                <div class = "card-header">
+                    <h3 id = "name-title">
+                    </h3>
+                </div>
+                <div class = "card-body">
+                    <div class="input-group">
+                        <input type="text"
+                               placeholder="Enter your message"
+                               id="message-value"
+                               autofocus
+                               class="form-control">
+                        <div class="input-group-append">
+                            <button class="btn btn-dark" id="send-btn">Send</button>
+                            <button class="btn btn-dark" id="logout">Logout</button>
+                        </div>
+                    </div>
+                    <div class = "table-responsive mt-3">
+                        <table id ="message-container-table">
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+</html>
